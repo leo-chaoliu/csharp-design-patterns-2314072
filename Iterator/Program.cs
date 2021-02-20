@@ -8,38 +8,42 @@ namespace Iterator
     {
         static void Main(string[] args)
         {
-            var collection = new DaysInMonthCollection();
+            // var collection = new DaysInMonthCollection();
 
-            // foreach (var days in collection)
+            // // foreach (var days in collection)
+            // // {
+            // //     Console.WriteLine($"Days in {days.Date} - {days.Days}");
+            // // }
+
+            // var enumerator = collection.GetEnumerator();
+
+            // while (enumerator.MoveNext())
             // {
+            //     var days = enumerator.Current;
             //     Console.WriteLine($"Days in {days.Date} - {days.Days}");
             // }
 
-            var enumerator = collection.GetEnumerator();
-
-            while (enumerator.MoveNext())
-            {
-                var days = enumerator.Current;
-                Console.WriteLine($"Days in {days.Date} - {days.Days}");
-            }
+            YieldReturn.Test();
         }
     }
 
-    class MonthWithDays {
-        public string Date {get;set;}
-        public int Days {get;set;}
+    class MonthWithDays
+    {
+        public string Date { get; set; }
+        public int Days { get; set; }
     }
 
     class DaysInMonthEnumerator : IEnumerator<MonthWithDays>
     {
         private int year = 1;
         private int month = 0;
-        
-        public MonthWithDays Current => 
-            new MonthWithDays() {
+
+        public MonthWithDays Current =>
+            new MonthWithDays()
+            {
                 Date = $"{year.ToString().PadLeft(4, '0')}-{month}",
                 Days = DateTime.DaysInMonth(year, month)
-             };
+            };
 
         object IEnumerator.Current => Current;
 
