@@ -10,8 +10,16 @@ namespace Iterator
         {
             var collection = new DaysInMonthCollection();
 
-            foreach (var days in collection)
+            // foreach (var days in collection)
+            // {
+            //     Console.WriteLine($"Days in {days.Date} - {days.Days}");
+            // }
+
+            var enumerator = collection.GetEnumerator();
+
+            while (enumerator.MoveNext())
             {
+                var days = enumerator.Current;
                 Console.WriteLine($"Days in {days.Date} - {days.Days}");
             }
         }
