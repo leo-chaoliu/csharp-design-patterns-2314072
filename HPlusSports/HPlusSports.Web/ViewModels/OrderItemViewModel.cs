@@ -61,7 +61,9 @@ namespace HPlusSports.Web.ViewModels
     }
 
     // Extension method on interface
+    // Encapsulate business logic in here
     public static class IOrderItemViewModel2Extension{
+
         public static string OrderFullName(this IOrderItemViewModel2 model2){
             return model2.CustomerName2 + model2.Status2;
         }
